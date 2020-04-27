@@ -1,0 +1,2 @@
+rootProject.name='Maidx'
+include ':app'

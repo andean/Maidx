@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.andean.maidx"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding{
+        enabled = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(project.STORE_FILE)
+            storePassword project.STORE_PASSWORD
+            keyAlias project.KEY_ALIAS
+            keyPassword project.KEY_PASSWORD
+        }
+        debug {
+            storeFile file(project.STORE_FILE)
+            storePassword project.STORE_PASSWORD
+            keyAlias project.KEY_ALIAS
+            keyPassword project.KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        release {
+            // 设置混淆
+            minifyEnabled true
+            // 移除无用的资源文件
+            shrinkResources true
+            // ZipAlign 优化
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            manifestPlaceholders = [APP_NAME      : "@string/app_name",
+                                    APP_ICON      : "@mipmap/ic_launcher",
+                                    APP_ROUND_ICON: "@mipmap/ic_launcher_round",
+                                    package_name  : "com.andean.maidx"]
+            buildConfigField 'String', 'BASE_URL', '"http://api/"'
+
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".dev"
+            manifestPlaceholders = [APP_NAME      : "@string/app_name_test",
+                                    APP_ICON      : "@mipmap/ic_shark",
+                                    APP_ROUND_ICON: "@mipmap/ic_shark_round",
+                                    package_name  : "com.andean.maidx.dev"]
+            buildConfigField 'String', 'BASE_URL', '"http://test.api/"'
+
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "Maidx_${variant.name}_${variant.versionName}_${buildTime()}" + ".apk"
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.8'
+}
