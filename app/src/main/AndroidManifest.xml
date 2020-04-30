@@ -32,13 +32,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.MainActivity" />
+
         <activity
             android:name=".wxapi.WXEntryActivity"
-            android:exported="true"
+            android:exported="false"
             android:launchMode="singleTask"
             android:taskAffinity="${package_name}"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <activity
             android:name=".dev.wxapi.WXEntryActivity"
             android:exported="true"
@@ -46,13 +49,13 @@
             android:taskAffinity="${package_name}"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <receiver
-            android:name=".AppRegister"
-            android:permission="com.tencent.mm.plugin.permission.SEND">
-            <intent-filter>
-                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
-            </intent-filter>
-        </receiver>
+<!--        <receiver-->
+<!--            android:name=".AppRegister"-->
+<!--            android:permission="com.tencent.mm.plugin.permission.SEND">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
     </application>
 
 </manifest>

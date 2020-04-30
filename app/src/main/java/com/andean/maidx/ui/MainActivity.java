@@ -39,22 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
         mBinding.sendText.setOnClickListener(v -> {
 
-            //初始化一个 WXTextObject 对象，填写分享的文本内容
+
             WXTextObject textObj = new WXTextObject();
             textObj.text = "分享的文本内容";
 
-            //用 WXTextObject 对象初始化一个 WXMediaMessage 对象
             WXMediaMessage msg = new WXMediaMessage();
             msg.mediaObject = textObj;
+            // msg.title = "Will be ignored";
             msg.description = "description";
+            msg.mediaTagName = "我是mediaTagName啊";
 
             SendMessageToWX.Req req = new SendMessageToWX.Req();
+            //req.transaction = buildTransaction("text");
             req.transaction = String.valueOf(System.currentTimeMillis());  //transaction字段用与唯一标示一个请求
             req.message = msg;
-            req.scene = SendMessageToWX.Req.WXSceneSession;
+            req.scene = SendMessageToWX.Req.WXSceneSession;;
 
-            //调用api接口，发送数据到微信
             api.sendReq(req);
+
+
 
         });
 
@@ -67,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
         // 将应用的appId注册到微信
         api.registerApp(Constants.APP_ID);
 
-        //建议动态监听微信启动广播进行注册到微信
-        registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-
-                // 将该app注册到微信
-                api.registerApp(Constants.APP_ID);
-            }
-        }, new IntentFilter(ConstantsAPI.ACTION_REFRESH_WXAPP));
+//        //建议动态监听微信启动广播进行注册到微信
+//        registerReceiver(new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//
+//                // 将该app注册到微信
+//                api.registerApp(Constants.APP_ID);
+//            }
+//        }, new IntentFilter(ConstantsAPI.ACTION_REFRESH_WXAPP));
 
     }
 }

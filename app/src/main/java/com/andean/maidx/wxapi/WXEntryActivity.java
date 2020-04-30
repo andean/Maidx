@@ -1,4 +1,6 @@
 package com.andean.maidx.wxapi;
 
-public class WXEntryActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class WXEntryActivity extends AppCompatActivity {
 }

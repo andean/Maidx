@@ -2,7 +2,7 @@ package com.andean.maidx;
 
 public class Constants {
 
-    public static final String APP_ID = "wxd930ea5d5a258f4f";
+    public static final String APP_ID = "wx6a230a76e687bec1";
 
 	public static final int PERMISSIONS_REQUEST_STORAGE = 1;
     
