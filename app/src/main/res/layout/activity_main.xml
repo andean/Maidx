@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:viewBindingIgnore="false"
+    tools:context=".ui.MainActivity" >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="微信分享"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShare"
-        android:layout_width="wrap_content"
+        android:id="@+id/sendText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="微信分享"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:viewBindingIgnore="true" />
+        android:text="@string/send_text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/send_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_img" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/send_music"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_music" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/send_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_video" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/send_webpage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_webpage" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
