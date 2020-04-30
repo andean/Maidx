@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
 ### 2. lottie使用
 
+https://github.com/airbnb/lottie-android
+
 ```
 dependencies {
   implementation 'com.airbnb.android:lottie:$lottieVersion'
