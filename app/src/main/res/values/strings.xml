@@ -1,8 +1,7 @@
 <resources>
 
     <string name="app_name">Maidx</string>
-    <string name="app_name_test">Maidx</string>
-    <!--    <string name="app_name_test">Maidx Dev</string>-->
+    <string name="app_name_test">Maidx Dev</string>
 
 
     <string name="app_back">返回</string>

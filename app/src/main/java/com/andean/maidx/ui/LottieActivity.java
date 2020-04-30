@@ -26,7 +26,8 @@ public class LottieActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                startActivity(new Intent(LottieActivity.this, MainActivity.class));
+                //startActivity(new Intent(LottieActivity.this, MainActivity.class));
+                startActivity(new Intent(LottieActivity.this, AboutActivity.class));
                 finish();
             }
         });
